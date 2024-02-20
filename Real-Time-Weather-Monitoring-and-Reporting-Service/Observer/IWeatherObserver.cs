@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Real_Time_Weather_Monitoring_and_Reporting_Service.Bots
 {
-    public interface IWeatherBot : IWeatherObserver
+    public interface IWeatherObserver
     {
         void Activate(WeatherData weatherData);
     }
