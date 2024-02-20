@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Real_Time_Weather_Monitoring_and_Reporting_Service.Observer
+namespace Real_Time_Weather_Monitoring_and_Reporting_Service.Adapter
 {
-    public interface IWeatherObserver
+    public interface IWeatherInputAdapter
     {
-        void Activate(WeatherData weatherData);
+        WeatherData ParseWeatherData(string weatherInput);
     }
 }
