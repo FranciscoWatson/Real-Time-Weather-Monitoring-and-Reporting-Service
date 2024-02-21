@@ -1,4 +1,5 @@
-﻿using Real_Time_Weather_Monitoring_and_Reporting_Service.Models;
+﻿using Real_Time_Weather_Monitoring_and_Reporting_Service.Bots.Bots_State;
+using Real_Time_Weather_Monitoring_and_Reporting_Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,21 +12,20 @@ namespace Real_Time_Weather_Monitoring_and_Reporting_Service.Bots
     {
         public float HumidityThreshold { get; set; }
         public string Message { get; set; }
-        public bool Enabled { get; set; }
+        public IBotState currentBotState { get; set; }
 
         public RainBot(float humidityThreshold, string message, bool enabled) 
         {
             HumidityThreshold = humidityThreshold;
             Message = message;
-            Enabled = enabled;
+            currentBotState = enabled ? new BotEnabledState() : new BotDisabledState();
         }
 
         public void Activate(WeatherData weatherData)
         {
-            if (weatherData.Humidity > HumidityThreshold && Enabled)
+            if (weatherData.Humidity > HumidityThreshold)
             {
-                Console.WriteLine("RainBot activated!");
-                Console.WriteLine($"RainBot: {Message}");
+                currentBotState.Activate(weatherData, "RainBot", Message);
             }
         }
     }
