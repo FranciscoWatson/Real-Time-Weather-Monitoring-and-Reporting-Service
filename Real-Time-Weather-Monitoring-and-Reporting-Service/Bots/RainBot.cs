@@ -9,13 +9,15 @@ namespace Real_Time_Weather_Monitoring_and_Reporting_Service.Bots
 {
     public class RainBot : IWeatherBot
     {
-        public float HumidityThreshold { get; }
+        public float HumidityThreshold { get; set; }
         public string Message { get; set; }
+        public bool Enabled { get; set; }
 
-        public RainBot(float humidityThreshold, string message) 
+        public RainBot(float humidityThreshold, string message, bool enabled) 
         {
             HumidityThreshold = humidityThreshold;
             Message = message;
+            Enabled = enabled;
         }
 
         public void Activate(WeatherData weatherData)
