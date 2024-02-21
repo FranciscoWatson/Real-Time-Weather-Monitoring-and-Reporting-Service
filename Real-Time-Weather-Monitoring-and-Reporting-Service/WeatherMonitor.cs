@@ -13,5 +13,10 @@ namespace Real_Time_Weather_Monitoring_and_Reporting_Service
     {
         public WeatherData WeatherData { get; set; }
 
+        public void ChangeWeatherData(WeatherData weatherData)
+        {
+            WeatherData = weatherData;
+            NotifyObservers(weatherData);
+        }
     }
 }
