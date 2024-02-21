@@ -22,7 +22,7 @@ namespace Real_Time_Weather_Monitoring_and_Reporting_Service.Bots
 
         public void Activate(WeatherData weatherData)
         {
-            if (weatherData.Temperature < TemperatureThreshold)
+            if (weatherData.Temperature < TemperatureThreshold && Enabled)
             {
                 Console.WriteLine("SnowBot activated!");
                 Console.WriteLine($"SnowBot: {Message}");

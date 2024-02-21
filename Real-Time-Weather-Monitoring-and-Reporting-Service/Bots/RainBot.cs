@@ -22,7 +22,7 @@ namespace Real_Time_Weather_Monitoring_and_Reporting_Service.Bots
 
         public void Activate(WeatherData weatherData)
         {
-            if (weatherData.Humidity > HumidityThreshold)
+            if (weatherData.Humidity > HumidityThreshold && Enabled)
             {
                 Console.WriteLine("RainBot activated!");
                 Console.WriteLine($"RainBot: {Message}");
