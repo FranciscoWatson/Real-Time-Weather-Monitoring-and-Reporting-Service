@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 namespace Real_Time_Weather_Monitoring_and_Reporting_Service.Adapter
 {
-    public class JsonWeatherInputAdapter : IWeatherInputAdapter
+    public class JsonWeatherInputStrategy : IWeatherInputStrategy
     {
         public WeatherData ParseWeatherData(string weatherInput)
         {

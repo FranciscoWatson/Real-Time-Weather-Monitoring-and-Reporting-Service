@@ -9,16 +9,16 @@ namespace Real_Time_Weather_Monitoring_and_Reporting_Service.Simple_Factory
 {
     public class WeatherInputFactory
     {
-        public static IWeatherInputAdapter CreateAdapter(string weatherData)
+        public static IWeatherInputStrategy CreateStrategy(string weatherData)
         {         
             string dataFormat = weatherData.Trim().StartsWith("{") ? "JSON" : "XML";
 
             switch (dataFormat.ToUpperInvariant())
             {
                 case "JSON":
-                    return new JsonWeatherInputAdapter();
+                    return new JsonWeatherInputStrategy();
                 case "XML":
-                    return new XmlWeatherInputAdapter();
+                    return new XmlWeatherInputStrategy();
                 default:
                     throw new InvalidOperationException($"No adapter found for data format: {dataFormat}");
             }

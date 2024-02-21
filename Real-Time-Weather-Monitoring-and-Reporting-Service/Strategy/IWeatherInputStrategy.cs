@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Real_Time_Weather_Monitoring_and_Reporting_Service.Adapter
 {
-    public interface IWeatherInputAdapter
+    public interface IWeatherInputStrategy
     {
         WeatherData ParseWeatherData(string weatherInput);
     }

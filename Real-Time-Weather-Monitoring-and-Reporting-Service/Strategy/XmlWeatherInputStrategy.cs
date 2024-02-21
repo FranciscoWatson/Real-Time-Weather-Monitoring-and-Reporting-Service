@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace Real_Time_Weather_Monitoring_and_Reporting_Service.Adapter
 {
-    public class XmlWeatherInputAdapter : IWeatherInputAdapter
+    public class XmlWeatherInputStrategy : IWeatherInputStrategy
     {
         public WeatherData ParseWeatherData(string weatherInput)
         {
