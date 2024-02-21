@@ -1,7 +1,7 @@
 {
   "RainBot": {
     "enabled": true,
-    "humidityThreshold": 70,
+    "humidityThreshold": 70.9,
     "message": "It looks like it's about to pour down!"
   },
   "SunBot": {
