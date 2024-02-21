@@ -11,6 +11,7 @@ namespace Real_Time_Weather_Monitoring_and_Reporting_Service.Adapter
     {
         public WeatherData ParseWeatherData(string weatherInput)
         {
+            weatherInput = weatherInput.Trim();
             return JsonConvert.DeserializeObject<WeatherData>(weatherInput);
         }
     }
