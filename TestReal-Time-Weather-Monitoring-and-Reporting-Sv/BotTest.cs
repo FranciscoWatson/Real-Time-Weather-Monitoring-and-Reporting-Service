@@ -13,13 +13,12 @@ namespace TestReal_Time_Weather_Monitoring_and_Reporting_Sv
 {
     public class BotTest
     {
+        Fixture fixture = new Fixture();
+        Mock<IBotState> botStateMock = new Mock<IBotState>();
         [Fact]
         public void RainBotCallsActivateOnItsStateWhenHumidityIsHigherTest()
         {
             // Arrange
-            var fixture = new Fixture();
-            var botStateMock = new Mock<IBotState>();
-
             var rainBot = new RainBot(
                 fixture.Create<float>(),
                 fixture.Create<string>(),
@@ -45,9 +44,6 @@ namespace TestReal_Time_Weather_Monitoring_and_Reporting_Sv
         public void RainBotDoesNotCallsActivateOnItsStateWhenHumidityIsLowerTest()
         {
             // Arrange
-            var fixture = new Fixture();
-            var botStateMock = new Mock<IBotState>();
-
             var rainBot = new RainBot(
                 fixture.Create<float>(),
                 fixture.Create<string>(),
@@ -74,9 +70,6 @@ namespace TestReal_Time_Weather_Monitoring_and_Reporting_Sv
         public void SnowBotCallsActivateOnItsStateWhenTemperatureIsLowerTest()
         {
             // Arrange
-            var fixture = new Fixture();
-            var botStateMock = new Mock<IBotState>();
-
             var snowBot = new SnowBot(
                 fixture.Create<float>(),
                 fixture.Create<string>(),
@@ -102,9 +95,6 @@ namespace TestReal_Time_Weather_Monitoring_and_Reporting_Sv
         public void SnowBotDoesNotCallActivateOnItsStateWhenTemperatureIsHigherTest()
         {
             // Arrange
-            var fixture = new Fixture();
-            var botStateMock = new Mock<IBotState>();
-
             var snowBot = new SnowBot(
                 fixture.Create<float>(),
                 fixture.Create<string>(),
@@ -131,9 +121,6 @@ namespace TestReal_Time_Weather_Monitoring_and_Reporting_Sv
         public void SunBotCallsActivateOnItsStateWhenTemperatureIsHigherTest()
         {
             // Arrange
-            var fixture = new Fixture();
-            var botStateMock = new Mock<IBotState>();
-
             var sunBot = new SunBot(
                 fixture.Create<float>(),
                 fixture.Create<string>(),
@@ -159,9 +146,6 @@ namespace TestReal_Time_Weather_Monitoring_and_Reporting_Sv
         public void SunBotDoesNotCallActivateOnItsStateWhenTemperatureIsLowerTest()
         {
             // Arrange
-            var fixture = new Fixture();
-            var botStateMock = new Mock<IBotState>();
-
             var sunBot = new SunBot(
                 fixture.Create<float>(),
                 fixture.Create<string>(),
