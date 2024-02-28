@@ -21,7 +21,7 @@ namespace Real_Time_Weather_Monitoring_and_Reporting_Service.Observer
             observers.Remove(observer);
         }
 
-        protected void NotifyObservers(WeatherData weatherData)
+        public virtual void NotifyObservers(WeatherData weatherData)
         {
             foreach (var observer in observers)
             {
