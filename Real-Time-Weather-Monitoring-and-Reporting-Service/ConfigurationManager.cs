@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Real_Time_Weather_Monitoring_and_Reporting_Service.Bots;
+using Real_Time_Weather_Monitoring_and_Reporting_Service.Bots.Bots_State;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,18 +19,25 @@ namespace Real_Time_Weather_Monitoring_and_Reporting_Service
             IWeatherBot rainBot = new RainBot(
                 Convert.ToSingle(dic["RainBot"]["humidityThreshold"]),
                 dic["RainBot"]["message"].ToString(),
-                Convert.ToBoolean(dic["RainBot"]["enabled"]));
+                 dic["RainBot"]["enabled"].ToString().Equals("true", StringComparison.OrdinalIgnoreCase)
+                            ? (IBotState)new BotEnabledState()
+                            : (IBotState)new BotDisabledState()
+            );
 
             IWeatherBot sunBot = new SunBot(
                 Convert.ToSingle(dic["SunBot"]["temperatureThreshold"]),
                 dic["SunBot"]["message"].ToString(),
-                Convert.ToBoolean(dic["SunBot"]["enabled"])
+                dic["SunBot"]["enabled"].ToString().Equals("true", StringComparison.OrdinalIgnoreCase)
+                            ? (IBotState)new BotEnabledState()
+                            : (IBotState)new BotDisabledState()
             );
 
             IWeatherBot snowBot = new SnowBot(
                 Convert.ToSingle(dic["SnowBot"]["temperatureThreshold"]),
                 dic["SnowBot"]["message"].ToString(),
-                Convert.ToBoolean(dic["SnowBot"]["enabled"])
+                 dic["SnowBot"]["enabled"].ToString().Equals("true", StringComparison.OrdinalIgnoreCase)
+                            ? (IBotState)new BotEnabledState()
+                            : (IBotState)new BotDisabledState()
             );
 
             List<IWeatherBot> weatherBots = [rainBot, sunBot, snowBot];

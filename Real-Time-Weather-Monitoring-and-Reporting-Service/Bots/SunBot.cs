@@ -14,11 +14,11 @@ namespace Real_Time_Weather_Monitoring_and_Reporting_Service.Bots
         public string Message { get; set; }
         public IBotState currentBotState { get; set; }
 
-        public SunBot(float temperatureThreshold, string message, bool enabled) 
+        public SunBot(float temperatureThreshold, string message, IBotState botstate) 
         {
             TemperatureThreshold = temperatureThreshold;
             Message = message;
-            currentBotState = enabled ? new BotEnabledState() : new BotDisabledState();
+            currentBotState = botstate;
         }
 
         public void Activate(WeatherData weatherData)
