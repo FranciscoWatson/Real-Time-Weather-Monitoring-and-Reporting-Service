@@ -10,8 +10,21 @@ namespace Real_Time_Weather_Monitoring_and_Reporting_Service.Simple_Factory
     public class WeatherInputFactory
     {
         public static IWeatherInputStrategy CreateStrategy(string weatherData)
-        {         
-            string dataFormat = weatherData.Trim().StartsWith("{") ? "JSON" : "XML";
+        {
+            string dataFormat;
+
+            if (weatherData.Trim().StartsWith("{"))
+            {
+                dataFormat = "JSON";
+            }
+            else if (weatherData.Trim().StartsWith("<"))
+            {
+                dataFormat = "XML";
+            }
+            else
+            {
+                throw new InvalidOperationException("No adapter found for data format.");
+            }
 
             switch (dataFormat.ToUpperInvariant())
             {
@@ -20,7 +33,7 @@ namespace Real_Time_Weather_Monitoring_and_Reporting_Service.Simple_Factory
                 case "XML":
                     return new XmlWeatherInputStrategy();
                 default:
-                    throw new InvalidOperationException($"No adapter found for data format: {dataFormat}");
+                    throw new InvalidOperationException("Unexpected data format.");
             }
         }
     }
